@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('page says my girlfriend is beautiful', (done) => {
+  chai.request(server)
+    .get('/')
+    .end((err, res) => {
+      expect(err).not.exist;
+      expect(JSON.stringify(res.text)).to.contain('My girlfriend is BEAUTIFUL');
+      done();
+    });
+  });
 })
